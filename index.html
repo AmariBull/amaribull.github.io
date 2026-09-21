@@ -3,21 +3,120 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello</title>
+  <title>My Cozy Corner</title>
+  <meta name="description" content="A personal blog about food, movies and TV, sports, and crochet.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="home">
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <h1>Hello, world.</h1>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="index.html">My Cozy Corner</a>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="food.html">Food</a></li>
+          <li><a href="media.html">Movies &amp; TV</a></li>
+          <li><a href="sports.html">Sports</a></li>
+          <li><a href="crafts.html">Crafts</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  <p>
-    This page is live. That is the only thing it is here to prove.
-  </p>
+  <main id="main">
+    <div class="hero">
+      <div class="wrap">
+        <span class="eyebrow">Welcome in</span>
+        <h1>Good food, good shows, good yarn.</h1>
+        <p>[One sentence about what this blog is: your favorite things, in one cozy place.]</p>
+        <a class="button" href="about.html">Meet me</a>
+      </div>
+    </div>
+    <svg class="wave" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 C200 60 400 60 600 30 C800 0 1000 0 1200 40 L1200 60 L0 60 Z"/></svg>
 
-  <p>
-    Everything about it is yours to delete. Open Claude Code in this folder and
-    tell it what you actually want to build.
-  </p>
+    <section>
+      <div class="wrap split">
+        <figure class="card">
+          <div class="ph blush" role="img" aria-label="Placeholder for a photo of me">[Photo of you]</div>
+        </figure>
+        <div>
+          <h2>Hi, I'm [your name]</h2>
+          <p>[Two or three sentences about you: where you are, what you do, why you started this blog.]</p>
+          <p><a href="about.html">Read more about me &rarr;</a></p>
+        </div>
+      </div>
+    </section>
 
+    <section>
+      <div class="wrap">
+        <div class="stats" aria-label="Fun facts">
+          <div class="stat"><b>[00]</b> restaurants tried</div>
+          <div class="stat"><b>[00]</b> movies watched</div>
+          <div class="stat"><b>[00]</b> games attended</div>
+          <div class="stat"><b>[00]</b> crochet projects</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Pick a corner</h2>
+          <p class="lede">Each interest has its own page with the details.</p>
+        </div>
+        <div class="grid">
+          <a class="card" href="food.html">
+            <div class="ph peach">[Food photo]</div>
+            <div class="card-body"><h3>Food &amp; Restaurants</h3><p>Where I eat, what I order, and where I want to go next.</p></div>
+          </a>
+          <a class="card" href="media.html">
+            <div class="ph lavender">[Movie or TV still]</div>
+            <div class="card-body"><h3>Movies &amp; TV</h3><p>What I'm watching and what I'd tell you to watch.</p></div>
+          </a>
+          <a class="card" href="sports.html">
+            <div class="ph sage">[Game-day photo]</div>
+            <div class="card-body"><h3>Sports</h3><p>The teams I follow and the moments I remember.</p></div>
+          </a>
+          <a class="card" href="crafts.html">
+            <div class="ph blush">[Crochet photo]</div>
+            <div class="card-body"><h3>Crafts &amp; Crochet</h3><p>Projects, patterns, and the yarn I keep buying.</p></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head"><h2>Latest picks</h2></div>
+        <div class="grid">
+          <article class="card">
+            <div class="ph wide peach">[Photo]</div>
+            <div class="card-body"><span class="tag">Food</span><h3>[Restaurant name]</h3><p>[One line on why you'd recommend it.]</p></div>
+          </article>
+          <article class="card">
+            <div class="ph wide lavender">[Photo]</div>
+            <div class="card-body"><span class="tag">Movies &amp; TV</span><h3>[Title]</h3><p>[One line on why you'd recommend it.]</p></div>
+          </article>
+          <article class="card">
+            <div class="ph wide blush">[Photo]</div>
+            <div class="card-body"><span class="tag">Crafts</span><h3>[Project name]</h3><p>[One line about how it turned out.]</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Made with yarn, snacks, and a lot of reruns.</p>
+      <p>&copy; 2026 [your name]</p>
+    </div>
+  </footer>
 </body>
 </html>

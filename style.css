@@ -1,34 +1,321 @@
-/* A deliberately small starting point.
-   It exists to prove one thing: this file is loading.
-   If you can see spacing and a readable line length, the path in index.html works.
-
-   Delete all of it whenever you want. */
+/* Soft pastel, cozy blog.
+   One stylesheet for every page. Each page's <body> class (food, media,
+   sports, crafts) sets --accent, so the same rules give each topic its own color. */
 
 :root {
-  /* Makes the page follow the reader's light or dark mode setting, for free. */
-  color-scheme: light dark;
+  --cream: #fff8f0;
+  --paper: #ffffff;
+  --plum: #3d2c3e;        /* all body text: dark on light keeps contrast high */
+  --plum-soft: #6b566c;
+  --blush: #f9d5e0;
+  --peach: #fbd3b5;
+  --butter: #fdf0b8;
+  --sage: #cfe8d5;
+  --sky: #cfe6f5;
+  --lavender: #e1d5f5;
+
+  --accent: var(--blush);
+  --accent-deep: #e58fb0;
+
+  --radius: 1.25rem;
+  --shadow: 0 6px 18px rgb(61 44 62 / 0.12);
+  --gap: clamp(1rem, 3vw, 1.75rem);
+
+  --font-display: "Caveat", "Segoe Print", "Bradley Hand", cursive;
+  --font-body: "Quicksand", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  color-scheme: light;
 }
+
+body.food    { --accent: var(--peach);    --accent-deep: #e8985f; }
+body.media   { --accent: var(--lavender); --accent-deep: #9a7fd1; }
+body.sports  { --accent: var(--sage);     --accent-deep: #5faa78; }
+body.crafts  { --accent: var(--blush);    --accent-deep: #e58fb0; }
+body.about   { --accent: var(--butter);   --accent-deep: #d9b52e; }
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-
-  /* 65ch caps the line at about 65 characters. Long lines are genuinely hard
-     to read, and this single rule does more for legibility than anything else
-     in this file. */
-  max-width: 65ch;
-
-  margin: 0 auto;
-  padding: 4rem 1.5rem;
-  line-height: 1.6;
+  margin: 0;
+  font-family: var(--font-body);
   font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--plum);
+  background: var(--cream);
 }
 
-h1 {
-  font-size: 3rem;
+h1, h2, h3 {
+  font-family: var(--font-display);
   line-height: 1.1;
-  margin-bottom: 1.5rem;
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+}
+h1 { font-size: clamp(2.75rem, 8vw, 4.75rem); }
+h2 { font-size: clamp(2rem, 5vw, 2.9rem); }
+h3 { font-size: 1.75rem; }
+
+p { margin: 0 0 1rem; }
+a { color: var(--plum); text-decoration-color: var(--accent-deep); text-underline-offset: 3px; text-decoration-thickness: 2px; }
+a:hover { text-decoration-color: var(--plum); }
+
+:focus-visible {
+  outline: 3px solid var(--plum);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
-p {
-  margin-bottom: 1.5rem;
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  background: var(--plum);
+  color: var(--cream);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  z-index: 20;
+}
+.skip-link:focus { top: 0.75rem; }
+
+.wrap {
+  width: min(70rem, 100% - 2rem);
+  margin-inline: auto;
+}
+
+/* ---------- Header and nav ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgb(255 248 240 / 0.94);
+  backdrop-filter: blur(6px);
+  border-bottom: 3px dotted var(--accent-deep);
+}
+.site-header .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem 1.5rem;
+  padding-block: 0.6rem;
+}
+.logo {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+nav a {
+  display: block;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.2s;
+}
+nav a:hover { background: var(--accent); transform: translateY(-2px); }
+nav a[aria-current="page"] { background: var(--accent); box-shadow: inset 0 0 0 2px var(--accent-deep); }
+
+/* ---------- Hero and page headers ---------- */
+
+.hero {
+  background: linear-gradient(135deg, var(--blush), var(--butter) 50%, var(--sky));
+  padding-block: clamp(3rem, 9vw, 6rem) clamp(4rem, 10vw, 7rem);
+  text-align: center;
+}
+.hero p { max-width: 38rem; margin-inline: auto; font-size: 1.3rem; }
+
+.page-head {
+  background: var(--accent);
+  padding-block: clamp(2rem, 6vw, 3.5rem) clamp(3rem, 8vw, 5rem);
+}
+.page-head p { max-width: 42rem; font-size: 1.2rem; margin-bottom: 0; }
+
+/* wavy edge under a colored band: the SVG is drawn in the page background color */
+.wave {
+  display: block;
+  width: 100%;
+  height: clamp(28px, 5vw, 56px);
+  margin-top: -1px;
+}
+.wave path { fill: var(--cream); }
+
+.eyebrow {
+  display: inline-block;
+  background: var(--paper);
+  border-radius: 999px;
+  padding: 0.1rem 0.9rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ---------- Sections ---------- */
+
+section { padding-block: clamp(1.75rem, 5vw, 3rem); }
+.section-head { margin-bottom: 1.25rem; }
+.lede { color: var(--plum-soft); max-width: 40rem; }
+
+.button {
+  display: inline-block;
+  background: var(--plum);
+  color: var(--cream);
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.button:hover { transform: translateY(-3px) rotate(-1deg); box-shadow: var(--shadow); }
+
+/* ---------- Grids and cards ---------- */
+
+.grid {
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+}
+.grid.tight { grid-template-columns: repeat(auto-fit, minmax(min(11rem, 100%), 1fr)); }
+
+.card {
+  background: var(--paper);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.card:hover { transform: translateY(-6px) rotate(-0.8deg); box-shadow: 0 12px 26px rgb(61 44 62 / 0.18); }
+.card-body { padding: 1rem 1.25rem 1.25rem; }
+.card-body p:last-child { margin-bottom: 0; }
+.card h3 { margin-bottom: 0.25rem; }
+a.card { text-decoration: none; color: inherit; }
+
+.tag {
+  display: inline-block;
+  background: var(--accent);
+  border-radius: 999px;
+  padding: 0 0.7rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-right: 0.25rem;
+}
+.rating { color: var(--plum); font-weight: 700; letter-spacing: 0.08em; }
+
+/* ---------- Image placeholders: swap the .ph div for an <img> in the same figure ---------- */
+
+figure { margin: 0; }
+.ph {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--plum);
+  background: linear-gradient(135deg, var(--c1, var(--blush)), var(--c2, var(--butter)));
+}
+.ph.wide   { aspect-ratio: 16 / 10; }
+.ph.poster { aspect-ratio: 2 / 3; }
+.ph.blush    { --c1: var(--blush);    --c2: var(--peach); }
+.ph.peach    { --c1: var(--peach);    --c2: var(--butter); }
+.ph.sage     { --c1: var(--sage);     --c2: var(--sky); }
+.ph.lavender { --c1: var(--lavender); --c2: var(--blush); }
+.ph.sky      { --c1: var(--sky);      --c2: var(--lavender); }
+.ph.butter   { --c1: var(--butter);   --c2: var(--sage); }
+figure img { display: block; width: 100%; height: auto; }
+figcaption { padding: 0.6rem 1.25rem 0; font-size: 0.95rem; color: var(--plum-soft); }
+
+/* ---------- Stat tiles ---------- */
+
+.stats {
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 1fr));
+  text-align: center;
+}
+.stat {
+  background: var(--paper);
+  border: 3px dashed var(--accent-deep);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+.stat b {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  line-height: 1;
+}
+
+/* ---------- Two-column intro, lists, accordions ---------- */
+
+.split {
+  display: grid;
+  gap: var(--gap);
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
+}
+.split .card { max-width: 24rem; }
+
+.checklist { list-style: none; padding: 0; margin: 0; }
+.checklist li {
+  background: var(--paper);
+  border-left: 8px solid var(--accent-deep);
+  border-radius: 0.75rem;
+  padding: 0.6rem 1rem;
+  margin-bottom: 0.6rem;
+  box-shadow: var(--shadow);
+}
+
+details {
+  background: var(--paper);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0.75rem;
+}
+summary { cursor: pointer; font-weight: 700; }
+details[open] summary { margin-bottom: 0.5rem; }
+
+.schedule {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--paper);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.schedule th, .schedule td { padding: 0.7rem 1rem; text-align: left; }
+.schedule th { background: var(--accent); }
+.schedule tr:nth-child(even) td { background: var(--cream); }
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  margin-top: 2rem;
+  background: var(--accent);
+  padding-block: 2rem;
+  text-align: center;
+}
+.site-footer p { margin: 0.25rem 0; }
+
+/* ---------- Motion off for people who ask for it ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+  .card:hover, .button:hover, nav a:hover { transform: none; }
 }
