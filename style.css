@@ -237,6 +237,17 @@ figure { margin: 0; }
 .ph.sky      { --c1: var(--sky);      --c2: var(--lavender); }
 .ph.butter   { --c1: var(--butter);   --c2: var(--sage); }
 figure img { display: block; width: 100%; height: auto; }
+
+/* A real photo, sized to match the .ph placeholder it replaces. Self-contained
+   (not just "figure img") since cards use it outside a <figure> too. */
+.photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+.photo.wide   { aspect-ratio: 16 / 10; }
+.photo.poster { aspect-ratio: 2 / 3; }
 figcaption { padding: 0.6rem 1.25rem 0; font-size: 0.95rem; color: var(--plum-soft); }
 
 /* ---------- Stat tiles ---------- */
