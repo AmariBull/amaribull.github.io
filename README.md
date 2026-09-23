@@ -1,5 +1,7 @@
 # Project 1 - Build Your Personal Website
 
+**Live site: [https://amaribull.github.io](https://amaribull.github.io)**
+
 **CSCI 498E / 598E - Coding with AI Agents**
 
 | | |
